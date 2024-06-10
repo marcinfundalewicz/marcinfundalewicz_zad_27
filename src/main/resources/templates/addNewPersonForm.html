@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista użytkowników</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h3>Dodaj nowego użytkownika</h3>
+    </br>
+    <form method="post" th:action="@{/addNewPerson}" th:object="${person}">
+        <div class="mb-3">
+            <label for="firstName" class="form-label">Imię</label>
+            <input type="text" class="form-control" id="firstName" th:field="*{firstName}">
+        </div>
+        <div class="mb-3">
+            <label for="lastName" class="form-label">Nazwisko</label>
+            <input type="text" class="form-control" id="lastName" th:field="*{lastName}">
+        </div>
+        <div class="mb-3">
+            <label for="birthDate" class="form-label">Data urodzenia</label>
+            <input type="date" class="form-control" id="birthDate" th:field="*{birthDate}">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Adres email</label>
+            <input type="email" class="form-control" id="email" th:field="*{email}">
+        </div>
+
+        <p> Zapisać na Newsletter?</p>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="trueNewsletter" value="true" th:field="*{signedUpForNewsletter}" checked>
+            <label class="form-check-label" for="trueNewsletter">
+                Tak
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="falseNewsletter" value="false" th:field="*{signedUpForNewsletter}">
+            <label class="form-check-label" for="falseNewsletter">
+                Nie
+            </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Dodaj</button>
+    </form>
+    </br>
+    <a th:href="@{/}">Powrót na stronę główną</a>
+</div>
+</body>
+</html>
